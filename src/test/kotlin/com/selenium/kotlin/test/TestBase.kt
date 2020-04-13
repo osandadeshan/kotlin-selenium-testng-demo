@@ -1,8 +1,11 @@
 package com.selenium.kotlin.test
 
 import io.github.bonigarcia.wdm.WebDriverManager
+import org.openqa.selenium.JavascriptExecutor
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.chrome.ChromeDriver
+import org.openqa.selenium.support.ui.ExpectedCondition
+import org.openqa.selenium.support.ui.WebDriverWait
 import org.testng.annotations.AfterMethod
 import org.testng.annotations.BeforeMethod
 import java.util.concurrent.TimeUnit
@@ -36,6 +39,13 @@ abstract class TestBase {
 
     fun getPageTitle(): String? {
         return driver.title
+    }
+
+    open fun waitForPageLoad(driver: WebDriver?) {
+        val pageLoadCondition: ExpectedCondition<Boolean> =
+            ExpectedCondition { driver -> (driver as JavascriptExecutor?)!!.executeScript("return document.readyState") == "complete" }
+        val wait = WebDriverWait(driver, 30)
+        wait.until(pageLoadCondition)
     }
 
 

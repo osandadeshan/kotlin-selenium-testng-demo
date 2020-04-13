@@ -27,8 +27,10 @@ class LoginTest : TestBase() {
 
     @Test
     fun validLogin() {
+        waitForPageLoad(driver)
         val homePage = HomePage(driver)
         homePage.clickOnSignInButton()
+        waitForPageLoad(driver)
         val loginPage = LoginPage(driver)
         loginPage.login(validEmail, validPassword)
         Assert.assertEquals(getPageTitle(),myAccountPageTitle)
@@ -36,8 +38,10 @@ class LoginTest : TestBase() {
 
     @Test
     fun invalidLogin() {
+        waitForPageLoad(driver)
         val homePage = HomePage(driver)
         homePage.clickOnSignInButton()
+        waitForPageLoad(driver)
         val loginPage = LoginPage(driver)
         loginPage.login(invalidEmail, invalidPassword)
         Assert.assertEquals(getPageTitle(),loginPageTitle)
