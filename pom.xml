@@ -16,7 +16,7 @@
         <kotlin.code.style>official</kotlin.code.style>
         <testng.version>6.8.8</testng.version>
         <selenium.version>3.14.0</selenium.version>
-        <bonigarcia.version>3.7.1</bonigarcia.version>
+        <bonigarcia.version>6.1.0</bonigarcia.version>
     </properties>
 
     <dependencies>
